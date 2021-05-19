@@ -39,12 +39,15 @@ function onOpenModalClickItemGallery(evt) {
 
 	refs.jsLightbox.classList.add('is-open');
 
-	refs.lightboxImage.src = evt.target.dataset.source;	
+	refs.lightboxImage.src = evt.target.dataset.source;
+	
 }
 
 function onCloseModalClickItemGallery() {
 	refs.jsLightbox.classList.remove('is-open');
 	refs.lightboxImage.src = '';
+
+	window.removeEventListener('keydown', onCloseModalClickEs);
 }
 
 function onCloseModalClickEs(evt) {
@@ -54,3 +57,9 @@ function onCloseModalClickEs(evt) {
 	}
 	window.removeEventListener('keydown', onCloseModalClickEs);
 }
+
+
+
+
+
+
