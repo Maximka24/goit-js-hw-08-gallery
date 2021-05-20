@@ -36,11 +36,14 @@ function addNewItemsJsGallery(items) {
 function onOpenModalClickItemGallery(evt) {
 	evt.preventDefault();
 	window.addEventListener('keydown', onCloseModalClickEs);
-
-	refs.jsLightbox.classList.add('is-open');
-
-	refs.lightboxImage.src = evt.target.dataset.source;
 	
+
+	if (evt.target !== evt.currentTarget) {
+		refs.jsLightbox.classList.add('is-open');
+
+		refs.lightboxImage.src = evt.target.dataset.source;
+		refs.lightboxImage.alt = evt.target.alt;
+	}	
 }
 
 function onCloseModalClickItemGallery() {
@@ -52,10 +55,9 @@ function onCloseModalClickItemGallery() {
 
 function onCloseModalClickEs(evt) {
 	if(evt.code === 'Escape') {
-		refs.jsLightbox.classList.remove('is-open');
-		refs.lightboxImage.src = '';
+		onCloseModalClickItemGallery();
 	}
-	window.removeEventListener('keydown', onCloseModalClickEs);
+	
 }
 
 
