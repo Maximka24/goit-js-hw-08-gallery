@@ -35,29 +35,29 @@ function addNewItemsJsGallery(items) {
 
 function onOpenModalClickItemGallery(evt) {
 	evt.preventDefault();
-	window.addEventListener('keydown', onCloseModalClickEs);
-	
 
 	if (evt.target !== evt.currentTarget) {
+		window.addEventListener('keydown', onCloseModalClickEs);
 		refs.jsLightbox.classList.add('is-open');
 
 		refs.lightboxImage.src = evt.target.dataset.source;
 		refs.lightboxImage.alt = evt.target.alt;
-	}	
+	}
 }
 
 function onCloseModalClickItemGallery() {
+	window.removeEventListener('keydown', onCloseModalClickEs);
 	refs.jsLightbox.classList.remove('is-open');
 	refs.lightboxImage.src = '';
+	refs.lightboxImage.alt = '';
 
-	window.removeEventListener('keydown', onCloseModalClickEs);
 }
 
 function onCloseModalClickEs(evt) {
-	if(evt.code === 'Escape') {
+	if (evt.code === 'Escape') {
 		onCloseModalClickItemGallery();
 	}
-	
+
 }
 
 
